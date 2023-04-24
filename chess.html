@@ -133,10 +133,18 @@ let id = arr[y_object[x_array[0]]]+i
 move_positions.push(id)
 document.getElementById(id).style.backgroundColor="#1e5e00";}    
 }
-console.log(move_positions)
 document.getElementById(x).style.backgroundColor="#4aec00";
-var j = move_positions.indexOf(x)
-move_positions.splice(j,1)
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
 for (var i = 0; i <  move_positions.length; i++){
 var position =  document.getElementById(move_positions[i]).addEventListener('click',move_rooks)
 }
@@ -697,10 +705,18 @@ let id = arr[y_object[x_array[0]]]+i
 move_positions.push(id)
 document.getElementById(id).style.backgroundColor="#1e5e00";}    
 }
-console.log(move_positions)
 document.getElementById(x).style.backgroundColor="#4aec00";
-var j = move_positions.indexOf(x)
-move_positions.splice(j,1)
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
 for (var i = 0; i <  move_positions.length; i++){
 var position =  document.getElementById(move_positions[i]).addEventListener('click',move_pawns)
 }
