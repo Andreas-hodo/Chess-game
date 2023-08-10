@@ -1,0 +1,6019 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play chess and have fun">
+    <meta name="keywords" content="chess,game,play,strategy,multiplayer games">
+    <meta name="author" content="Andreas Hodo">
+    <link rel="" href="chess-gd812ecf46_1280.png">
+    <title>Chess</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous"/>
+</head>
+
+<body>
+<nav>
+<div id="box">
+ <h2>The game is not ready yet</h2>
+ <h3 id="turn">White's Turn</h3>
+<div id="promotion" class="promote">
+  <div class="promote-content">
+    <p>What do you want to promote to?</p>
+    <i id="rook"class = "fas fa-chess-rook"></i>
+    <i id="knight" class = "fas fa-chess-knight"></i>
+    <i id="bishop" class = "fas fa-chess-bishop"></i>
+    <i id="queen"class = "fas fa-chess-queen"></i>
+  </div>
+</div>
+<div id="promotion_1" class="promote_1">
+  <div class="promote-content_1">
+    <p>What do you want to promote to?</p>
+    <i id="rook_1"class = "fas fa-chess-rook"></i>
+    <i id="knight_1" class = "fas fa-chess-knight"></i>
+    <i id="bishop_1" class = "fas fa-chess-bishop"></i>
+    <i id="queen_1"class = "fas fa-chess-queen"></i>
+  </div>
+</div>
+<div id="row8"><span id="cor_8">8</span><span id="a8"><i onclick="rooks_b(this.id)"id="rook_1b" class ="fas fa-chess-rook"></i></span>
+<span id="b8"><i onclick="knights_b(this.id)" id="knight_1b"  class="fas fa-chess-knight"></i></span><span id="c8"><i onclick="bishops_b(this.id)"id="bishop_1b"class="fas fa-chess-bishop"></i></span>
+<span id="d8"><i onclick="queen_b(this.id)" id="queen_b" class="fas fa-chess-queen"></i></span><span id="e8"><i onclick="king_b(this.id)" id="king_b" class="fas fa-chess-king"></i></span>
+<span id="f8"><i onclick="bishops_b(this.id)" id="bishop_2b" class="fas fa-chess-bishop"></i></span><span id="g8"><i onclick="knights_b(this.id)"id="knight_2b"class="fas fa-chess-knight"></i></span>
+<span id="h8"><i onclick="rooks_b(this.id)" id="rook_2b"class="fas fa-chess-rook"></i></span></div>  
+
+<div id="row7"><span id="cor_7">7</span><span id="a7"><i onclick="pawns_b(this.id)" id="pawn_1b"  class="fas fa-chess-pawn"></i></span>
+<span id="b7"><i onclick="pawns_b(this.id)"id="pawn_2b" class="fas fa-chess-pawn"></i></span><span id="c7"><i onclick="pawns_b(this.id)" id="pawn_3b" class="fas fa-chess-pawn"></i></span>
+<span id="d7"><i  onclick="pawns_b(this.id)"id="pawn_4b" class="fas fa-chess-pawn"></i></span><span id="e7"><i onclick="pawns_b(this.id)"id="pawn_5b" class="fas fa-chess-pawn"></i></span>
+<span id="f7"><i onclick="pawns_b(this.id)" id="pawn_6b" class="fas fa-chess-pawn"></i></span><span id="g7"><i onclick="pawns_b(this.id)" id="pawn_7b"  class="fas fa-chess-pawn"></i></span>
+<span id="h7"><i onclick="pawns_b(this.id)"id="pawn_8b" class="fas fa-chess-pawn"></i></span></div>   
+
+<div id="row6"><span id="cor_6">6</span><span id="a6"></span>
+<span id="b6"></span><span id="c6"></span>
+<span id="d6"></span><span id="e6"></i></span>
+<span id="f6"></span><span id="g6"></span>
+<span id="h6"></span></div>
+
+<div id="row5"><span id="cor_5">5</span><span id="a5"></span>
+<span id="b5"></span><span id="c5"></span>
+<span id="d5"></span><span id="e5"></i></span>
+<span id="f5"></span><span id="g5"></span>
+<span id="h5"></span></div> 
+
+<div id="row4"><span id="cor_4">4</span><span id="a4"></span>
+<span id="b4"></span><span id="c4"></span>
+<span id="d4"></span><span id="e4"></i></span>
+<span id="f4"></span><span id="g4"></span>
+<span id="h4"></span></div>
+
+<div id="row3"><span id="cor_3">3</span><span id="a3"></span>
+<span id="b3"></span><span id="c3"></span>
+<span id="d3"></span><span id="e3"></i></span>
+<span id="f3"></span><span id="g3"></span>
+<span id="h3"></span></div>
+
+
+<div id="row2"><span span id="cor_2">2</span><span id="a2"><i onclick="pawns_w(this.id)"id="pawn_1w" class="fas fa-chess-pawn"></i></span>
+<span id="b2"><i onclick="pawns_w(this.id)" id="pawn_2w"class="fas fa-chess-pawn"></i></span><span id="c2"><i onclick="pawns_w(this.id)" id="pawn_3w" class="fas fa-chess-pawn"></i></span>
+<span id="d2"><i onclick="pawns_w(this.id)"id="pawn_4w" class="fas fa-chess-pawn"></i></span><span id="e2"><i onclick="pawns_w(this.id)" id="pawn_5w" class="fas fa-chess-pawn"></i></span>
+<span id="f2"><i onclick="pawns_w(this.id)" id="pawn_6w" class="fas fa-chess-pawn"></i></span><span id="g2"><i onclick="pawns_w(this.id)"id="pawn_7w" class="fas fa-chess-pawn"></i></span>
+<span id="h2"><i onclick="pawns_w(this.id)" id="pawn_8w"class="fas fa-chess-pawn"></i></span></div>
+
+<div id="row1"><span id="cor_1">1</span><span id="a1"><i onclick="rooks_w(this.id)" id="rook_1w"class="fas fa-chess-rook"></i></span>
+<span id="b1"><i onclick="knights_w(this.id)" id="knight_1w"class="fas fa-chess-knight"></i></span><span id="c1"><i onclick="bishops_w(this.id)" id="bishop_1w" class="fas fa-chess-bishop"></i></span>
+<span id="d1"><i onclick="queen_w(this.id)" id="queen_w" class="fas fa-chess-queen"></i></span><span id="e1"><i onclick="king_w(this.id)"id="king_w" class="fas fa-chess-king"></i></span>
+<span id="f1"><i onclick="bishops_w(this.id)" id="bishop_2w"class="fas fa-chess-bishop"></i></span><span id="g1"><i onclick="knights_w(this.id)" id="knight_2w"class="fas fa-chess-knight"></i></span>
+<span id="h1"><i onclick="rooks_w(this.id)" id="rook_2w" class="fas fa-chess-rook"></i></span></div><div id = "cor_letters"><span id="cor_a1">a</span><span id="cor_b1">b</span><span id="cor_c1">c</span><span id="cor_d1">d</span><span id="cor_e1">e</span><span id="cor_f1">f</span><span id="cor_g1">g</span><span id="cor_h1">h</span></div>
+
+        </nav>
+</div>
+
+<script>
+"use strict";
+function coloring(){
+//Coloring:#f0c996,#644b2b
+for (let x = 1,y = 1; x < 8; x+=2,y+=2){
+let arr = [0,"a","b","c","d","e","f","g","h"]
+let arr_1 = [0,"a","b","c","d","e","f","g","h"]
+let int = parseInt(arr[x])
+for (let int = 1; int < 8; int+=2){
+let id = arr_1[y]+int; 
+let color = document.getElementById(id).style.backgroundColor="#644b2b";}
+
+for (let x = 1,y = 2; x < 8; x+=2,y+=2){
+let arr = [0,"a","b","c","d","e","f","g","h"]
+let arr_1 = [0,"a","b","c","d","e","f","g","h"]
+int = parseInt(arr[x])
+for (let int = 2; int < 9; int+=2){
+let id = arr_1[y]+int; 
+let color = document.getElementById(id).style.backgroundColor="#644b2b";}
+}
+}
+
+for (let x = 2,y = 2; x < 9; x+=2,y+=2){
+let arr = [0,"a","b","c","d","e","f","g","h"]
+let arr_1 = [0,"a","b","c","d","e","f","g","h"]
+let int = parseInt(arr[x])
+for (let int = 2; int < 9; int+=2){
+let id = arr_1[y]+int; 
+let color = document.getElementById(id).style.backgroundColor="#644b2b";}
+}
+
+for (let x = 2,y = 1; x < 9; x+=2,y+=2){
+let arr = [0,"a","b","c","d","e","f","g","h"]
+let arr_1 = [0,"a","b","c","d","e","f","g","h"]
+let int = parseInt(arr[x])
+for (let int = 2; int < 9; int+=2){
+let id = arr_1[y]+int; 
+let color = document.getElementById(id).style.backgroundColor="#f0c996";}}
+
+for (let x = 2,y = 2; x < 9; x+=2,y+=2){
+let arr = [0,"a","b","c","d","e","f","g","h"]
+let arr_1 = [0,"a","b","c","d","e","f","g","h"]
+let int = parseInt(arr[x])
+for (let int = 1; int < 8; int+=2){
+let id = arr_1[y]+int; 
+let color = document.getElementById(id).style.backgroundColor="#f0c996";}}}
+coloring()
+
+//Moves
+
+
+var multiple_choices = 0;
+var castle_king_w = 0;
+var castle_king_b = 0;
+var castle_rook_1w = 0;
+var castle_rook_2w = 0;
+var castle_rook_1b = 0;
+var castle_rook_2b = 0;
+var help = 0;
+var g = 0;
+var to_be_removed = [];
+var pos_map = [];
+var castle_arr = [];
+var map = {pos:{}};
+var controller = new AbortController();
+var signal = controller.signal;
+
+
+function moves_map(){
+var a = ["a","b","c","d","e","f","g","h"];
+var b = ["1","2","3","4","5","6","7","8"];
+var d = [];
+for (let i = 0; i < 8; i++){
+for (let j = 0; j < 8; j++){
+let id = a[i]+b[j];  
+if (document.getElementById(id).firstElementChild == null){
+continue;}
+var child = document.getElementById(id).firstElementChild.id
+console.log(child);
+let clicked_id = child;
+//ROOK ROOK ROOK ROOK start 
+function rook(clicked_id){
+if (clicked_id == "rook_1b" || clicked_id == "rook_2b" || clicked_id == "rook_3b" || clicked_id == "rook_4b" || clicked_id == "rook_5b" || clicked_id == "rook_6b" || clicked_id == "rook_7b" || clicked_id == "rook_8b" || clicked_id == "rook_9b" || clicked_id == "rook_10b"){
+console.log(clicked_id)
+var t=document.getElementById(clicked_id);
+console.log("Black_rook")
+var y = t.parentNode.id;
+var x = y
+var move_positions = [];
+var removed_positions = [];
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+ if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions); 
+}else{
+    return;
+}}
+rook(clicked_id)  
+//ROOK ROOK ROOK ROOK end 
+//KNIGHT KNIGHT KNIGHT start
+function knight(clicked_id){
+if (clicked_id == "knight_1b" || clicked_id == "knight_2b"|| clicked_id == "knight_3b" || clicked_id == "knight_4b" || clicked_id == "knight_5b" || clicked_id == "knight_6b" || clicked_id == "knight_7b" || clicked_id == "knight_8b" || clicked_id == "knight_9b" || clicked_id == "knight_10b"){
+var t=document.getElementById(clicked_id);
+console.log("Black_knight")
+var x= t.parentNode.id;
+var move_positions = [];
+var y_object =  {a:"3",b:"4",c:"5",d:"6",e:"7",f:"8",g:"9",h:"10"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"2",h:"2"}
+var x_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"2"}
+var g_object = {a:"2",b:"2",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var k_object = {a:"2",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,2,2]
+var arr_2 = [0,0,0,0,0,0,0,0,2]
+var arr_3 = [0,2,2,0,0,0,0,0,0]
+var arr_4 = [0,2,0,0,0,0,0,0,0]
+var x_array = Array.from(x)
+var h = parseInt(x_array[1])
+for (var i = h+2,c = arr[y_object[x_array[0]]-3]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h+2,c = arr[y_object[x_array[0]]-1]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]]; i > x_array[1]-1+arr_2[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+    move_positions.push(id) 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1])-1+arr_2[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h-1,c = arr[y_object[x_array[0]]]; i > x_array[1]-2+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+
+for (var i = h-1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1]-2)+arr_4[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+    move_positions.push(id) 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-3]; i >parseInt(x_array[1])-4+arr_3[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+    move_positions.push(id) 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-1]; i > x_array[1]-4+arr_3[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+    move_positions.push(id) 
+} 
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions)
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){  
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(move_positions[i])
+}
+}else{
+    return;
+}
+}
+}
+}
+knight(clicked_id)
+//KNIGHT KNIGHT KNIGHT end 
+//BISHOP BISHOP BISHOP start
+function bishop(clicked_id){
+if (clicked_id == "bishop_1b" || clicked_id == "bishop_2b"|| clicked_id == "bishop_3b" || clicked_id == "bishop_4b" || clicked_id == "bishop_5b" || clicked_id == "bishop_6b" || clicked_id == "bishop_7b" || clicked_id == "bishop_8b" || clicked_id == "bishop_9b" || clicked_id == "bishop_10b"){   
+var t=document.getElementById(clicked_id);
+console.log("Black_bishop")
+var move_positions = [];
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x= t.parentNode.id;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+var removed_positions = []
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){  
+move_positions.push(id)
+break;  
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+} 
+
+}
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+} 
+}
+move_positions.push(id)}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+} 
+break;  
+}
+   move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)  
+break;  
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}  
+break;  
+}
+   move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions) 
+}else{
+    return;
+}
+}
+bishop(clicked_id)
+//BISHOP BISHOP BISHOP end
+//KING KING KING start 
+function king(clicked_id){
+if (clicked_id == "king_b"){
+var t=document.getElementById(clicked_id);
+console.log("Black_king")
+var x= t.parentNode.id;
+var move_positions = [];
+var x_array = Array.from(x)
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var y_object = {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"-1"}
+var x_object = {a:"-1",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr_1 = [0,1,1,2,3,4,5,6,7]
+var arr_2 = [0,1,2,3,4,5,6,7,8]
+var arr_3 = [0,2,3,4,5,6,7,8,9]
+var arr_4 = [0,-4,-3,-2,-1,0,1,2,3]
+var arr_5 = [0,0,0,0,0,0,0,0,1]
+var arr_6 = [0,1,0,0,0,0,0,0,0]
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+move_positions.push(id)
+}    
+for (var i = parseInt(x_array[1]),c = arr[arr_3[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+move_positions.push(id)
+}        
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+break;  
+}
+}
+move_positions.push(id)
+} 
+for (var i = parseInt(x_array[1]),c = arr[arr_1[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+break;  
+}
+}
+move_positions.push(id)
+}             
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(move_positions[i])
+}
+}
+} 
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions)     
+}else{
+    return;
+}
+}
+king(clicked_id)
+//KING KING KING end
+//QUEEN QUEEN QUEEN  start
+function queen(clicked_id){
+if (clicked_id == "queen_b"|| clicked_id == "queen_3b" || clicked_id == "queen_4b" || clicked_id == "queen_5b" || clicked_id == "queen_6b" || clicked_id == "queen_7b" || clicked_id == "queen_8b" || clicked_id == "queen_9b" || clicked_id == "queen_10b"){
+var t=document.getElementById(clicked_id);
+console.log("Black_queen")
+var y= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var x = y;
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+
+
+
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;  if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions);    
+}else{
+    return;
+}
+}
+queen(clicked_id)
+//QUEEN QUEEN QUEEN end
+//PAWN PAWN PAWN start 
+function pawn(clicked_id){
+if (clicked_id == "pawn_1b" || clicked_id == "pawn_2b"|| clicked_id == "pawn_3b" || clicked_id == "pawn_4b"|| clicked_id == "pawn_5b" || clicked_id == "pawn_6b"|| clicked_id == "pawn_7b" || clicked_id == "pawn_8b"){
+var t=document.getElementById(clicked_id);
+console.log("Black_pawn")
+var x = t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+let arr = [0,"a","b","c","d","e","f","g","h"]
+var x_array = Array.from(x)
+if(document.getElementById("h7").contains(document.getElementById("pawn_8b"))&& x ==="h7"||document.getElementById("g7").contains(document.getElementById("pawn_7b"))&& x ==="g7"||document.getElementById("f7").contains(document.getElementById("pawn_6b"))&& x ==="f7"||document.getElementById("e7").contains(document.getElementById("pawn_5b"))&& x ==="e7"||document.getElementById("d7").contains(document.getElementById("pawn_4b"))&& x ==="d7"||document.getElementById("c7").contains(document.getElementById("pawn_3b"))&& x ==="c7"||document.getElementById("b7").contains(document.getElementById("pawn_2b"))&& x ==="b7"||document.getElementById("a7").contains(document.getElementById("pawn_1b"))&& x ==="a7"){
+for (var i = x_array[1]; i > x_array[1]-3; i--){
+var id_enemy_1 = arr[parseInt(y_object[x_array[0]])+1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_1).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_1). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id_enemy_1)
+}}}
+
+var id_enemy_2 = arr[parseInt(y_object[x_array[0]])-1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_2).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_2). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){  
+move_positions.push(id_enemy_2) 
+}}}
+
+let id = arr[y_object[x_array[0]]]+i
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+}}else{
+for (var i = x_array[1]; i > x_array[1]-2; i--){
+var id_enemy_1 = arr[parseInt(y_object[x_array[0]])+1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_1).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_1). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+move_positions.push(id_enemy_1)  
+}}}
+
+var id_enemy_2 = arr[parseInt(y_object[x_array[0]])-1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_2).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_2). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+move_positions.push(id_enemy_2) 
+}}}
+
+
+let id = arr[y_object[x_array[0]]]+i
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+break;   
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+}    
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions);   
+}else{
+    return;
+}
+}
+pawn(clicked_id)
+//PAWN PAWN PAWN end
+//ROOK ROOK ROOK ROOK start 
+function rook_1(clicked_id){
+if (clicked_id == "rook_1w" || clicked_id == "rook_2w" || clicked_id == "rook_3w" || clicked_id == "rook_4w" || clicked_id == "rook_5w" || clicked_id == "rook_6w" || clicked_id == "rook_7w" || clicked_id == "rook_8w" || clicked_id == "rook_9w" || clicked_id == "rook_10w"){
+console.log(clicked_id)
+var t=document.getElementById(clicked_id);
+console.log("Black_rook")
+var y = t.parentNode.id;
+var x = y
+var move_positions = [];
+var removed_positions = [];
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+ if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions); 
+}else{
+    return;
+}}
+rook_1(clicked_id)  
+//ROOK ROOK ROOK ROOK end 
+//KNIGHT KNIGHT KNIGHT start
+function knight_1(clicked_id){
+if (clicked_id == "knight_1w" || clicked_id == "knight_2w" || clicked_id == "knight_3w" || clicked_id == "knight_4w" || clicked_id == "knight_5w" || clicked_id == "knight_6w" || clicked_id == "knight_7w" || clicked_id == "knight_8w" || clicked_id == "knight_9w" || clicked_id == "knight_10w"){
+var t=document.getElementById(clicked_id);
+console.log("Black_knight")
+var x= t.parentNode.id;
+var move_positions = [];
+var y_object =  {a:"3",b:"4",c:"5",d:"6",e:"7",f:"8",g:"9",h:"10"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"2",h:"2"}
+var x_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"2"}
+var g_object = {a:"2",b:"2",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var k_object = {a:"2",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,2,2]
+var arr_2 = [0,0,0,0,0,0,0,0,2]
+var arr_3 = [0,2,2,0,0,0,0,0,0]
+var arr_4 = [0,2,0,0,0,0,0,0,0]
+var x_array = Array.from(x)
+var h = parseInt(x_array[1])
+for (var i = h+2,c = arr[y_object[x_array[0]]-3]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h+2,c = arr[y_object[x_array[0]]-1]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]]; i > x_array[1]-1+arr_2[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+    move_positions.push(id) 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1])-1+arr_2[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+    move_positions.push(id)
+}
+for (var i = h-1,c = arr[y_object[x_array[0]]]; i > x_array[1]-2+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+    move_positions.push(id)
+}
+
+for (var i = h-1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1]-2)+arr_4[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+    move_positions.push(id) 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-3]; i >parseInt(x_array[1])-4+arr_3[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+    move_positions.push(id) 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-1]; i > x_array[1]-4+arr_3[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+    move_positions.push(id) 
+} 
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions)
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){  
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(move_positions[i])
+}
+}else{
+    return;
+}
+}
+}
+}
+knight_1(clicked_id)
+//KNIGHT KNIGHT KNIGHT end 
+//BISHOP BISHOP BISHOP start
+function bishop_1(clicked_id){
+if (clicked_id == "bishop_1w" || clicked_id == "bishop_2w" || clicked_id == "bishop_3w" || clicked_id == "bishop_4w" || clicked_id == "bishop_5w" || clicked_id == "bishop_6w" || clicked_id == "bishop_7w" || clicked_id == "bishop_8w" || clicked_id == "bishop_9w" || clicked_id == "bishop_10w"){   
+var t=document.getElementById(clicked_id);
+console.log("Black_bishop")
+var move_positions = [];
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x= t.parentNode.id;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+var removed_positions = []
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){  
+move_positions.push(id)
+break;  
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+} 
+
+}
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="w"){ 
+removed_positions.push(id)
+break;  
+} 
+}
+move_positions.push(id)}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+} 
+break;  
+}
+   move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)  
+break;  
+}
+else if(br[parent.length-1]==="w"){ 
+removed_positions.push(id)
+break;  
+}  
+break;  
+}
+   move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions) 
+}else{
+    return;
+}
+}
+bishop_1(clicked_id)
+//BISHOP BISHOP BISHOP end
+//KING KING KING start 
+function king_1(clicked_id){
+if (clicked_id == "king_w"){
+var t=document.getElementById(clicked_id);
+console.log("Black_king")
+var x= t.parentNode.id;
+var move_positions = [];
+var x_array = Array.from(x)
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var y_object = {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"-1"}
+var x_object = {a:"-1",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr_1 = [0,1,1,2,3,4,5,6,7]
+var arr_2 = [0,1,2,3,4,5,6,7,8]
+var arr_3 = [0,2,3,4,5,6,7,8,9]
+var arr_4 = [0,-4,-3,-2,-1,0,1,2,3]
+var arr_5 = [0,0,0,0,0,0,0,0,1]
+var arr_6 = [0,1,0,0,0,0,0,0,0]
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+move_positions.push(id)
+}    
+for (var i = parseInt(x_array[1]),c = arr[arr_3[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+move_positions.push(id)
+}        
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+break;  
+}
+}
+move_positions.push(id)
+} 
+for (var i = parseInt(x_array[1]),c = arr[arr_1[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+break;  
+}
+}
+move_positions.push(id)
+}  
+d.push(move_positions)
+map[child] = d;
+d = []; 
+map.pos[child] = x;          
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){ 
+}
+else if(br[parent.length-1]==="b"){
+removed_positions.push(move_positions[i])
+}
+}
+} 
+console.log(move_positions)     
+}else{
+    return;
+}
+}
+king_1(clicked_id)
+//KING KING KING end
+//QUEEN QUEEN QUEEN  start
+function queen_1(clicked_id){
+if (clicked_id == "queen_w" || clicked_id == "queen_3w" || clicked_id == "queen_4w" || clicked_id == "queen_5w" || clicked_id == "queen_6w" || clicked_id == "queen_7w" || clicked_id == "queen_8w" || clicked_id == "queen_9w" || clicked_id == "queen_10w"){
+var t=document.getElementById(clicked_id);
+console.log("Black_queen")
+var y= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var x = y;
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+}
+
+
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+
+
+
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;  if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i; if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions);    
+}else{
+    return;
+}
+}
+queen_1(clicked_id)
+//QUEEN QUEEN QUEEN end
+//PAWN PAWN PAWN start 
+function pawn_1(clicked_id){
+if (clicked_id == "pawn_1w" || clicked_id == "pawn_2w"|| clicked_id == "pawn_3w" || clicked_id == "pawn_4w"|| clicked_id == "pawn_5w" || clicked_id == "pawn_6w"|| clicked_id == "pawn_7w" || clicked_id == "pawn_8w"){
+var t=document.getElementById(clicked_id);
+console.log("White_pawn")
+var x= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+let arr = [0,"a","b","c","d","e","f","g","h"]
+var x_array = Array.from(x)
+if(document.getElementById("h2").contains(document.getElementById("pawn_8w"))&& x ==="h2"||document.getElementById("g2").contains(document.getElementById("pawn_7w"))&& x ==="g2"||document.getElementById("f2").contains(document.getElementById("pawn_6w"))&& x ==="f2"||document.getElementById("e2").contains(document.getElementById("pawn_5w"))&& x ==="e2"||document.getElementById("d2").contains(document.getElementById("pawn_4w"))&& x ==="d2"||document.getElementById("c2").contains(document.getElementById("pawn_3w"))&& x ==="c2"||document.getElementById("b2").contains(document.getElementById("pawn_2w"))&& x ==="b2"||document.getElementById("a2").contains(document.getElementById("pawn_1w"))&& x ==="a2"){
+for (var i = x_array[1]; i < parseInt(x_array[1])+3; i++){
+let id = arr[y_object[x_array[0]]]+i
+var w = parseInt(x_array[1])+1
+var id_enemy_3 = arr[parseInt(y_object[x_array[0]])+1]+w
+console.log(id_enemy_3)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_3).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_3). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id_enemy_3)
+}}}
+var w = parseInt(x_array[1])+1
+var id_enemy_4 = arr[parseInt(y_object[x_array[0]])-1]+w
+console.log(id_enemy_4)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_4).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_4). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){ 
+move_positions.push(id_enemy_4)
+}}}
+
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+}}else{
+for (var i = x_array[1]; i < parseInt(x_array[1])+2; i++){
+let id = arr[y_object[x_array[0]]]+i
+var w = parseInt(x_array[1])+1
+var id_enemy_3 = arr[parseInt(y_object[x_array[0]])+1]+w
+console.log(id_enemy_3)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_3).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_3). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id_enemy_3) 
+}}}
+var w = parseInt(x_array[1])+1
+var id_enemy_4 = arr[parseInt(y_object[x_array[0]])-1]+w
+console.log(id_enemy_4)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_4).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_4). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+move_positions.push(id_enemy_4)  
+}}}
+
+
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+break;   
+}
+else if(br[parent.length-1]==="w"){ 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+}    
+}
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+d.push(move_positions)
+map[child] = d;
+d = [];
+map.pos[child] = x;
+console.log(move_positions);
+}
+}
+pawn_1(clicked_id)
+//PAWN PAWN PAWN end
+}    
+}
+console.log(map)
+g = 0;
+}
+
+function go_map(){
+if (g == 1){
+    map = {pos:{}};
+    setTimeout(moves_map,1000)
+}}
+
+var pawn_promotion = document.getElementById("promotion");
+
+var pawn_promotion_1 = document.getElementById("promotion_1");
+function get_1(b){
+pawn_promotion.style.display ="block" 
+ 
+let rook = document.getElementById("rook")
+let knight = document.getElementById("knight")
+let bishop = document.getElementById("bishop")
+let queen = document.getElementById("queen")
+rook.addEventListener('click',promote)
+knight.addEventListener('click',promote)
+bishop.addEventListener('click',promote)
+queen.addEventListener('click',promote)
+return b;
+function promote (event,x){
+var elementId = event.target.id;
+let number = "3"
+var new_pawn = document.createElement('i');
+if (elementId === "rook"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)    
+pawn_promotion.style.display ="none"
+new_pawn.onclick = function() { rooks_b(this.id); }
+}else if (elementId === "knight"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)    
+pawn_promotion.style.display ="none"
+new_pawn.onclick = function() { knights_b(this.id); }
+}else if (elementId === "bishop"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)    
+pawn_promotion.style.display ="none"
+new_pawn.onclick = function() { bishops_b(this.id); }
+}else if (elementId === "queen"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)    
+pawn_promotion.style.display ="none"
+new_pawn.onclick = function() { queen_b(this.id); }
+}
+
+new_pawn.style.color = "black";
+
+new_pawn.id = elementId+"_"+number+"b";
+
+new_pawn.className = "fas fa-chess-"+elementId;
+
+
+if (elementId === "rook" || elementId === "knight" || elementId === "bishop" || elementId === "queen"){
+var newParent = document.getElementById(b);
+newParent.appendChild(new_pawn)};
+number++  
+}
+}
+
+function get_2(b){
+pawn_promotion_1.style.display ="block"  
+let rook = document.getElementById("rook_1")
+let knight = document.getElementById("knight_1")
+let bishop = document.getElementById("bishop_1")
+let queen = document.getElementById("queen_1")
+rook.addEventListener('click',promote_1)
+knight.addEventListener('click',promote_1)
+bishop.addEventListener('click',promote_1)
+queen.addEventListener('click',promote_1)
+return b;
+function promote_1 (event,x){
+let p = event.target.id;
+let r = Array.from(p)
+let e = r.length - 2
+let g = r.splice(0,e)
+let h = g.join("");
+let elementId = h;
+
+let number = "3"
+var new_pawn = document.createElement('i');
+if (elementId === "rook"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)    
+pawn_promotion_1.style.display ="none"
+new_pawn.onclick = function() { rooks_w(this.id); }
+}else if (elementId === "knight"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)  
+pawn_promotion_1.style.display ="none"
+new_pawn.onclick = function() { knights_w(this.id); }
+}else if (elementId === "bishop"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)  
+pawn_promotion_1.style.display ="none"
+new_pawn.onclick = function() { bishops_w(this.id); }
+}else if (elementId === "queen"){
+var remove_piece = document.getElementById(b);
+remove_piece.removeChild(remove_piece.firstElementChild)  
+pawn_promotion_1.style.display ="none"
+new_pawn.onclick = function() { queen_w(this.id); }
+}
+
+new_pawn.style.color = "white";
+
+new_pawn.id = elementId+"_"+number+"w";
+
+new_pawn.className = "fas fa-chess-"+elementId;
+
+if (elementId === "rook" || elementId === "knight" || elementId === "bishop" || elementId === "queen"){
+var newParent = document.getElementById(b);
+newParent.appendChild(new_pawn)};
+number++  
+}
+}    
+
+
+function pawns_b(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_pawn")
+var x = t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+let arr = [0,"a","b","c","d","e","f","g","h"]
+var x_array = Array.from(x)
+if(document.getElementById("h7").contains(document.getElementById("pawn_8b"))&& x ==="h7"||document.getElementById("g7").contains(document.getElementById("pawn_7b"))&& x ==="g7"||document.getElementById("f7").contains(document.getElementById("pawn_6b"))&& x ==="f7"||document.getElementById("e7").contains(document.getElementById("pawn_5b"))&& x ==="e7"||document.getElementById("d7").contains(document.getElementById("pawn_4b"))&& x ==="d7"||document.getElementById("c7").contains(document.getElementById("pawn_3b"))&& x ==="c7"||document.getElementById("b7").contains(document.getElementById("pawn_2b"))&& x ==="b7"||document.getElementById("a7").contains(document.getElementById("pawn_1b"))&& x ==="a7"){
+for (var i = x_array[1]; i > x_array[1]-3; i--){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+var id_enemy_1 = arr[parseInt(y_object[x_array[0]])+1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_1).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_1). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id_enemy_1).style.backgroundColor="#fff100";   
+move_positions.push(id_enemy_1)
+}}}
+
+var id_enemy_2 = arr[parseInt(y_object[x_array[0]])-1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_2).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_2). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id_enemy_2).style.backgroundColor="#fff100";  
+move_positions.push(id_enemy_2) 
+}}}
+
+let id = arr[y_object[x_array[0]]]+i
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}}else{
+for (var i = x_array[1]; i > x_array[1]-2; i--){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+var id_enemy_1 = arr[parseInt(y_object[x_array[0]])+1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_1).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_1). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id_enemy_1).style.backgroundColor="#fff100"; 
+move_positions.push(id_enemy_1)  
+}}}
+
+var id_enemy_2 = arr[parseInt(y_object[x_array[0]])-1]+parseInt(x_array[1]-1)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_2).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_2). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id_enemy_2).style.backgroundColor="#fff100";  
+move_positions.push(id_enemy_2) 
+}}}
+
+
+let id = arr[y_object[x_array[0]]]+i
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff";
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}    
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_rooks,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_rooks(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+const squares = ["h2", "g2", "f2", "e2", "d2", "c2", "b2", "a2"];
+
+for (const square of squares) {
+  if (containsPawn(square)) {
+    get_1(this.id);
+  }
+}
+
+function containsPawn(squareId) {
+  const squareElement = document.getElementById(squareId);
+  const pawns = ["pawn_8b", "pawn_7b", "pawn_6b", "pawn_5b", "pawn_4b", "pawn_3b", "pawn_2b", "pawn_1b"];
+
+  for (const pawnId of pawns) {
+    if (squareElement.contains(document.getElementById(pawnId))) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked"); 
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_rooks)}
+}
+}    
+
+
+function rooks_b(clicked_id){
+console.log(clicked_id)
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_rook")
+var y = t.parentNode.id;
+var x = y
+var move_positions = [];
+var removed_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+    let id = arr[y_object[x_array[0]]]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for(var i = x_array[1]; i < 9; i++){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+ if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+    let id = arr[a]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_rooks,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+var a = clicked_id;
+function move_rooks(clicked_id){
+if (a == "rook_1b"){
+castle_rook_1b++   
+}else if (a == "rook_2b"){
+castle_rook_2b++    
+}
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_rooks)}
+}
+}
+
+function knights_b(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_knight")
+var x= t.parentNode.id;
+var move_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var y_object =  {a:"3",b:"4",c:"5",d:"6",e:"7",f:"8",g:"9",h:"10"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"2",h:"2"}
+var x_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"2"}
+var g_object = {a:"2",b:"2",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var k_object = {a:"2",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,2,2]
+var arr_2 = [0,0,0,0,0,0,0,0,2]
+var arr_3 = [0,2,2,0,0,0,0,0,0]
+var arr_4 = [0,2,0,0,0,0,0,0,0]
+var x_array = Array.from(x)
+var h = parseInt(x_array[1])
+for (var i = h+2,c = arr[y_object[x_array[0]]-3]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+2,c = arr[y_object[x_array[0]]-1]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]]; i > x_array[1]-1+arr_2[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1])-1+arr_2[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h-1,c = arr[y_object[x_array[0]]]; i > x_array[1]-2+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1]-2)+arr_4[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-3]; i >parseInt(x_array[1])-4+arr_3[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-1]; i > x_array[1]-4+arr_3[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+} 
+document.getElementById(x).style.backgroundColor="#4aec00";
+console.log(move_positions)
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(move_positions[i]).style.backgroundColor="#fff100";  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(move_positions[i]).style.backgroundColor="#0003ff"; 
+removed_positions.push(move_positions[i])
+}
+}
+}
+console.log(removed_positions)
+/*here ends*/
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_knights,{signal})
+}
+/*here code*/
+for (var i = 0; i < removed_positions.length; i++){
+var position =  document.getElementById(removed_positions[i]).removeEventListener('click',move_knights)
+}
+/*here ends*/
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_knights(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_knights)}
+}
+}
+
+
+
+
+
+function bishops_b(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_bishop")
+var move_positions = [];
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x= t.parentNode.id;
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+var removed_positions = []
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";  
+move_positions.push(id)
+break;  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+} 
+
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+} 
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+   if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id) 
+break;  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+} 
+break;  
+}
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+   if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id)  
+break;  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}  
+break;  
+}
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_bishops,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_bishops(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_bishops)}
+}
+}
+
+
+function king_b(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_king")
+var x= t.parentNode.id;
+var move_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_array = Array.from(x)
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var y_object = {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"-1"}
+var x_object = {a:"-1",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr_1 = [0,1,1,2,3,4,5,6,7]
+var arr_2 = [0,1,2,3,4,5,6,7,8]
+var arr_3 = [0,2,3,4,5,6,7,8,9]
+var arr_4 = [0,-4,-3,-2,-1,0,1,2,3]
+var arr_5 = [0,0,0,0,0,0,0,0,1]
+var arr_6 = [0,1,0,0,0,0,0,0,0]
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}    
+for (var i = parseInt(x_array[1]),c = arr[arr_3[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}        
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+} 
+for (var i = parseInt(x_array[1]),c = arr[arr_1[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+console.log(move_positions)               
+document.getElementById(x).style.backgroundColor="#4aec00";
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(move_positions[i]).style.backgroundColor="#fff100";  
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(move_positions[i]).style.backgroundColor="#0003ff"; 
+removed_positions.push(move_positions[i])
+}
+}
+}
+console.log(removed_positions)
+/*here ends*/
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_king,{signal})
+}
+/*here code*/
+for (var i = 0; i < removed_positions.length; i++){
+var position =  document.getElementById(removed_positions[i]).removeEventListener('click',move_king)
+}
+/*here ends*/
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_king(clicked_id){
+g++
+go_map()
+castle_king_b++
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_king)}
+}
+}
+
+function queen_b(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("Black_queen")
+var y= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var x = y;
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i;
+   if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+} if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+    if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+} if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+document.getElementById(x).style.backgroundColor="#4aec00";
+
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+
+
+
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="White's Turn"){
+coloring()
+break;
+}   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_queen,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_queen(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="White's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_queen)}
+}
+}
+
+
+function pawns_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("White_pawn")
+var x= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+let arr = [0,"a","b","c","d","e","f","g","h"]
+var x_array = Array.from(x)
+if(document.getElementById("h2").contains(document.getElementById("pawn_8w"))&& x ==="h2"||document.getElementById("g2").contains(document.getElementById("pawn_7w"))&& x ==="g2"||document.getElementById("f2").contains(document.getElementById("pawn_6w"))&& x ==="f2"||document.getElementById("e2").contains(document.getElementById("pawn_5w"))&& x ==="e2"||document.getElementById("d2").contains(document.getElementById("pawn_4w"))&& x ==="d2"||document.getElementById("c2").contains(document.getElementById("pawn_3w"))&& x ==="c2"||document.getElementById("b2").contains(document.getElementById("pawn_2w"))&& x ==="b2"||document.getElementById("a2").contains(document.getElementById("pawn_1w"))&& x ==="a2"){
+for (var i = x_array[1]; i < parseInt(x_array[1])+3; i++){
+let id = arr[y_object[x_array[0]]]+i
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+var w = parseInt(x_array[1])+1
+var id_enemy_3 = arr[parseInt(y_object[x_array[0]])+1]+w
+console.log(id_enemy_3)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_3).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_3). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id_enemy_3).style.backgroundColor="#fff100";   
+move_positions.push(id_enemy_3)
+}}}
+var w = parseInt(x_array[1])+1
+var id_enemy_4 = arr[parseInt(y_object[x_array[0]])-1]+w
+console.log(id_enemy_4)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_4).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_4). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id_enemy_4).style.backgroundColor="#fff100";   
+move_positions.push(id_enemy_4)
+}}}
+
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff";
+break;   
+}
+else if(br[parent.length-1]==="b"){ 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}}else{
+for (var i = x_array[1]; i < parseInt(x_array[1])+2; i++){
+let id = arr[y_object[x_array[0]]]+i
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+var w = parseInt(x_array[1])+1
+var id_enemy_3 = arr[parseInt(y_object[x_array[0]])+1]+w
+console.log(id_enemy_3)
+if (x_array[0]=== "h"){
+}else{
+if (document.getElementById(id_enemy_3).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_3). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id_enemy_3).style.backgroundColor="#fff100";  
+move_positions.push(id_enemy_3) 
+}}}
+var w = parseInt(x_array[1])+1
+var id_enemy_4 = arr[parseInt(y_object[x_array[0]])-1]+w
+console.log(id_enemy_4)
+if (x_array[0]=== "a"){
+}else{
+if (document.getElementById(id_enemy_4).innerHTML !== ""){
+var parent = document.getElementById(id_enemy_4). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id_enemy_4).style.backgroundColor="#fff100"; 
+move_positions.push(id_enemy_4)  
+}}}
+
+
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}    
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_pawns,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_pawns(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+const squares = ["h7", "g7", "f7", "e7", "d7", "c7", "b7", "a7"];
+
+for (const square of squares) {
+  if (containsPawn(square)) {
+    get_2(this.id);
+  }
+}
+
+function containsPawn(squareId) {
+  const squareElement = document.getElementById(squareId);
+  const pawns = ["pawn_8w", "pawn_7w", "pawn_6w", "pawn_5w", "pawn_4w", "pawn_3w", "pawn_2w", "pawn_1w"];
+
+  for (const pawnId of pawns) {
+    if (squareElement.contains(document.getElementById(pawnId))) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_pawns)}
+}
+}    
+
+
+function rooks_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("White_rook")
+var y= t.parentNode.id;
+var move_positions = [];
+var removed_positions = [];
+var x = y;
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_array = Array.from(x)
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+} if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_rooks,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+var a = clicked_id;
+function move_rooks(clicked_id){
+g++
+go_map()
+if (a == "rook_1w"){
+castle_rook_1w++   
+}else if (a == "rook_2w"){
+castle_rook_2w++  
+}
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_rooks)}
+}
+}
+
+
+
+function knights_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("White_knight")
+var x= t.parentNode.id;
+var move_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var y_object =  {a:"3",b:"4",c:"5",d:"6",e:"7",f:"8",g:"9",h:"10"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"2",h:"2"}
+var x_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"2"}
+var g_object = {a:"2",b:"2",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var k_object = {a:"2",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,2,2]
+var arr_2 = [0,0,0,0,0,0,0,0,2]
+var arr_3 = [0,2,2,0,0,0,0,0,0]
+var arr_4 = [0,2,0,0,0,0,0,0,0]
+var x_array = Array.from(x)
+var h = parseInt(x_array[1])
+for (var i = h+2,c = arr[y_object[x_array[0]]-3]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+2,c = arr[y_object[x_array[0]]-1]; i > parseInt(x_array[1])+arr_1[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]]; i > x_array[1]-1+arr_2[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h+1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1])-1+arr_2[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var i = h-1,c = arr[y_object[x_array[0]]]; i > x_array[1]-2+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-1,c = arr[y_object[x_array[0]]-4]; i > parseInt(x_array[1]-2)+arr_4[x_array[1]]+parseInt(g_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-3]; i >parseInt(x_array[1])-4+arr_3[x_array[1]]+parseInt(k_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+
+for (var i = h-2,c = arr[y_object[x_array[0]]-1]; i > x_array[1]-4+arr_3[x_array[1]]+parseInt(x_object[x_array[0]]); i-=2,c++){
+    var id = c+i;
+    if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+} 
+console.log(move_positions)
+document.getElementById(x).style.backgroundColor="#4aec00";
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(move_positions[i]).style.backgroundColor="#fff100";  
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(move_positions[i]).style.backgroundColor="#0003ff"; 
+removed_positions.push(move_positions[i])
+}
+}
+}
+console.log(removed_positions)
+/*here ends*/
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_knights,{signal})
+}
+/*here code*/
+for (var i = 0; i < removed_positions.length; i++){
+var position =  document.getElementById(removed_positions[i]).removeEventListener('click',move_knights)
+}
+/*here ends*/
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_knights(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_knights)}
+}
+}
+
+
+function bishops_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+var move_positions = [];
+console.log("White_bishop")
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x= t.parentNode.id;
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+
+
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+var removed_positions = []
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}   if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_bishops,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_bishops(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_bishops)}
+}
+}
+
+function king_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("White_king")
+var x= t.parentNode.id;
+var move_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var x_array = Array.from(x)
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var y_object = {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var z_object = {a:"0",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"-1"}
+var x_object = {a:"-1",b:"0",c:"0",d:"0",e:"0",f:"0",g:"0",h:"0"}
+var arr_1 = [0,1,1,2,3,4,5,6,7]
+var arr_2 = [0,1,2,3,4,5,6,7,8]
+var arr_3 = [0,2,3,4,5,6,7,8,9]
+var arr_4 = [0,-4,-3,-2,-1,0,1,2,3]
+var arr_5 = [0,0,0,0,0,0,0,0,1]
+var arr_6 = [0,1,0,0,0,0,0,0,0]
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])-1+arr_6[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 5+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}    
+for (var i = parseInt(x_array[1]),c = arr[arr_3[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}   
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_3[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(z_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_2[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]; i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}        
+for (var i = parseInt(x_array[1])+1+arr_5[x_array[1]],c = arr[arr_1[y_object[x_array[0]]]]; i < 7+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+} 
+for (var i = parseInt(x_array[1]),c = arr[arr_1[y_object[x_array[0]]]]; i < 6+arr_4[x_array[1]]+parseInt(x_object[x_array[0]]); i++,c--){
+let id = c+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+break;  
+}
+}
+document.getElementById(id).style.backgroundColor="#1e5e00";
+move_positions.push(id)
+}
+              
+document.getElementById(x).style.backgroundColor="#4aec00";
+/*here code*/
+var removed_positions = [];
+for (var i = 0; i <  move_positions.length; i++){
+    if (document.getElementById(move_positions[i]).innerHTML!==""){
+var parent = document.getElementById(move_positions[i]). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(move_positions[i]).style.backgroundColor="#fff100";  
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(move_positions[i]).style.backgroundColor="#0003ff"; 
+removed_positions.push(move_positions[i])
+}
+}
+}
+console.log(removed_positions)
+
+
+var found = false;
+
+for (var key in map) {
+  if (Array.isArray(map[key])) {
+    for (var i = 0; i < map[key].length; i++) {
+      for (var j = 0; j < map[key][i].length; j++) {
+        var currentString = map[key][i][j];
+        let b = key.length - 1;
+        if (key[b] == "w"){
+            continue;
+        }
+        if (currentString == "e1" || currentString == "f1" || currentString == "g1"){
+          console.log("HELLO:", key)
+          found = true; 
+          } 
+       }  
+    }    
+  }
+}
+if (castle_rook_2w < 1 && castle_king_w < 1 && document.getElementById("f1").innerHTML == "" && document.getElementById("g1").innerHTML == "" && found == false && document.getElementById("turn").innerHTML==="White's Turn"){
+document.getElementById("g1").style.backgroundColor = "#00FFFF"
+move_positions.push("g1")
+}
+console.log(move_positions)
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+} 
+/*here ends*/
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_king,{signal})
+}
+/*here code*/
+for (var i = 0; i < removed_positions.length; i++){
+var position =  document.getElementById(removed_positions[i]).removeEventListener('click',move_king)
+}
+/*here ends*/
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_king(clicked_id){
+g++
+go_map()
+if (document.getElementById("g1").style.backgroundColor == "rgb(0, 255, 255)" && this.id == "g1"){
+var oldParent = document.getElementById("h1");
+var newParent = document.getElementById("f1");
+while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+}
+castle_king_w++
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_king)}
+}
+}
+
+function queen_w(clicked_id){
+multiple_choices++
+var t=document.getElementById(clicked_id);
+console.log("White_queen")
+var y= t.parentNode.id;
+var x = y
+var x_array = Array.from(x)
+var move_positions = [];
+var removed_positions = [];
+if (document.getElementById(x).style.backgroundColor== "rgb(255, 241, 0)"){
+    multiple_choices = 0;
+}
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+for (var i = x_array[1]-1; i > 0; i--){
+    let id = arr[y_object[x_array[0]]]+i;
+    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for (var a = y_object[x_array[0]], i = x_array[1]; a < 9; a++){
+    let id = arr[a]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+
+for(var i = x_array[1]; i < 9; i++){
+var arr = [0,"a","b","c","d","e","f","g","h"]
+ let id = arr[y_object[x_array[0]]]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+} if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00"; 
+}
+for (var a = y_object[x_array[0]], i = x_array[1]; a > 0; a--){
+    let id = arr[a]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}    if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+    move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+document.getElementById(x).style.backgroundColor="#4aec00";
+
+var xrow1 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow1 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow1 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var mrow1 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+
+var xrow2 =["0",+2,+0,+0,+0,+0,+0,-0,-0]
+var yrow2 =["0",-0,-0,-0,-0,-0,+0,+0,+2]
+var zrow2 =["0",+4,+4,+3,+2,+1,+0,-1,-2]
+var mrow2 =["0",-5,-4,-3,-2,-1,+0,+1,+1]
+
+var xrow3 =["0",+2,+1,+0,+0,+0,+0,-0,-0]
+var yrow3 =["0",-0,-0,-0,-0,-0,+0,+1,+2]
+var zrow3 =["0",+3,+3,+3,+2,+1,+0,-1,-2]
+var mrow3 =["0",-5,-4,-3,-2,-1,+0,+0,+0]
+
+var xrow4 =["0",+3,+2,+1,+0,+0,+0,-0,-0]
+var yrow4 =["0",-1,-1,-1,-1,-1,+0,+1,+2]
+var zrow4 =["0",+2,+2,+2,+2,+1,+0,-1,-2]
+var mrow4 =["0",-4,-3,-2,-1,+0,+0,+0,+0]
+
+var xrow5 =["0",+4,+3,+2,+1,+0,+0,+0,+0]
+var yrow5 =["0",-2,-2,-2,-2,-1,+0,+1,+2]
+var zrow5 =["0",+1,+1,+1,+1,+1,+0,-1,-2]
+var mrow5 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var xrow6 =["0",+5,+4,+3,+2,+1,+0,-0,-0]
+var yrow6 =["0",-3,-3,-3,-2,-1,+0,+1,+2]
+var zrow6 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow6 =["0",-2,-1,-0,+0,+0,+0,+0,+0]
+
+var xrow7 =["0",+5,+4,+3,+2,+1,+0,-1,-1]
+var yrow7 =["0",-4,-4,-3,-2,-1,+0,+1,+2]
+var zrow7 =["0",+0,+0,+0,+0,+0,+0,+0,-2]
+var mrow7 =["0",-1,-0,-0,+0,+0,+0,+0,+0]
+
+var xrow8 =["0",+5,+4,+3,+2,+1,+0,-1,-2]
+var yrow8 =["0",-5,-4,-3,-2,-1,+0,+1,+2]
+var zrow8 =["0",+0,+0,+0,+0,+0,+0,-1,-2]
+var mrow8 =["0",-3,-2,-1,+0,+0,+0,+0,+0]
+
+var z_object =  {a:"8",b:"7",c:"6",d:"5",e:"4",f:"3",g:"2",h:"1"}
+
+var x;
+var x_arr = Array.from(x)
+if(x_arr[1]==1){
+var f = xrow1[z_object[x_arr[0]]]
+var g = yrow1[z_object[x_arr[0]]]
+var h = zrow1[z_object[x_arr[0]]]
+var k = mrow1[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==2){
+var f = xrow2[z_object[x_arr[0]]]
+var g = yrow2[z_object[x_arr[0]]]
+var h = zrow2[z_object[x_arr[0]]]
+var k = mrow2[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==3){
+var f = xrow3[z_object[x_arr[0]]]
+var g = yrow3[z_object[x_arr[0]]]
+var h = zrow3[z_object[x_arr[0]]]
+var k = mrow3[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==4){
+var f = xrow4[z_object[x_arr[0]]]
+var g = yrow4[z_object[x_arr[0]]]
+var h = zrow4[z_object[x_arr[0]]]
+var k = mrow4[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==5){
+var f = xrow5[z_object[x_arr[0]]]
+var g = yrow5[z_object[x_arr[0]]]
+var h = zrow5[z_object[x_arr[0]]]
+var k = mrow5[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==6){
+var f = xrow6[z_object[x_arr[0]]]
+var g = yrow6[z_object[x_arr[0]]]
+var h = zrow6[z_object[x_arr[0]]]
+var k = mrow6[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==7){
+var f = xrow7[z_object[x_arr[0]]]
+var g = yrow7[z_object[x_arr[0]]]
+var h = zrow7[z_object[x_arr[0]]]
+var k = mrow7[z_object[x_arr[0]]]
+}
+else if(x_arr[1]==8){
+var f = xrow8[z_object[x_arr[0]]]
+var g = yrow8[z_object[x_arr[0]]]
+var h = zrow8[z_object[x_arr[0]]]
+var k = mrow8[z_object[x_arr[0]]]
+}
+
+var y_object =  {a:"1",b:"2",c:"3",d:"4",e:"5",f:"6",g:"7",h:"8"}
+var arr = [0,"a","b","c","d","e","f","g","h"]
+var arr_1 = [0,0,0,0,0,0,0,1,2]
+var arr_2 = [0,0,0,0,1,2,3,4,5]
+var arr_3 = [0,4,5,6,7,8,9,9,9]
+var arr_4 = [7,7,8,9,9,9,9,9]
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_1[x_arr[1]]+f; i--,b++){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i > arr_2[x_arr[1]]+g; i--,b--){
+var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_3[x_arr[1]]+h;  i++,b--){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100";
+move_positions.push(id) 
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+for (var i = x_arr[1],b = y_object[x_arr[0]]; i < arr_4[x_arr[1]]+k;  i++,b++){
+   var id = arr[b]+i;
+if (document.getElementById("turn").innerHTML==="Black's Turn"){
+coloring()
+break;
+}
+if(document.getElementById(id)===document.getElementById(x)){continue 
+}else if (document.getElementById(id).innerHTML!==""){ 
+var parent = document.getElementById(id). children[0].id
+var br = Array.from(parent)
+if(br[parent.length-1]==="b"){
+document.getElementById(id).style.backgroundColor="#fff100"; 
+move_positions.push(id)
+break;   
+}
+else if(br[parent.length-1]==="w"){
+document.getElementById(id).style.backgroundColor="#0003ff"; 
+removed_positions.push(id)
+break;  
+}
+}
+   move_positions.push(id)
+document.getElementById(id).style.backgroundColor="#1e5e00";
+}
+document.getElementById(x).style.backgroundColor="#4aec00";
+var index = move_positions.length - 1;
+
+while (index >= 0) {
+  if (move_positions[index] === x) {
+    move_positions.splice(index, 1);
+  }
+
+  index -= 1;
+}
+
+console.log(move_positions);
+for (var i = 0; i < move_positions.length; i++){
+castle_arr.push(move_positions[i]) 
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).addEventListener('click',move_queen,{signal})
+}
+if (multiple_choices == 1){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])}    
+}
+if (multiple_choices == 2){
+for (var i = 0; i < move_positions.length; i++){
+ to_be_removed.push(move_positions[i])   
+}    
+controller.abort();
+console.log("The",to_be_removed,"has been removed") 
+coloring();
+multiple_choices = 0;
+to_be_removed = [];
+controller = new AbortController();
+signal = controller.signal;
+}
+function move_queen(clicked_id){
+g++
+go_map()
+multiple_choices = 0;
+var remove_piece = document.getElementById(this.id).style.backgroundColor; 
+if (document.getElementById(this.id).style.backgroundColor== "rgb(74, 236, 0)" || document.getElementById(this.id).style.backgroundColor== "rgb(255, 241, 0)"){ 
+var remove_piece = document.getElementById(this.id); 
+remove_piece.removeChild(remove_piece.firstElementChild)};
+var turning = document.getElementById("turn")
+turning.innerText="Black's Turn"
+coloring()
+console.log("clicked")
+var oldParent = document.getElementById(x);
+var newParent = document.getElementById(this.id);
+ while (oldParent.childNodes.length > 0){newParent.appendChild(oldParent.childNodes[0]);
+}
+for (var i = 0; i <  move_positions.length; i++){
+var position =  document.getElementById(move_positions[i]).removeEventListener('click',move_queen)}
+}
+}
+
+
+</script>
+<style>
+body{
+        background-color:#ff8800;
+    }
+#box {
+    height: 640px;
+    margin: 20px;
+}
+#turn{display:flex;
+     align-items: center;
+    justify-content:center;}
+nav {
+    background-color:#ff8800;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+}
+
+.fa-chess-queen{
+font-size:1.7em;}
+
+.fa-chess-rook{
+font-size:1.7em;}
+
+.fa-chess-knight{
+font-size:1.7em;}
+
+.fa-chess-bishop{
+font-size:1.7em;}
+
+.fa-chess-king{
+font-size:1.7em;}
+
+.fa-chess-queen{
+font-size:1.7em;}
+
+.fa-chess-pawn{
+font-size:1.7em;}
+
+#a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,
+#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,
+#c1,#c2,#c3,#c4,#c5,#c6,#c7,#c8,
+#d1,#d2,#d3,#d4,#d5,#d6,#d7,#d8,
+#e1,#e2,#e3,#e4,#e5,#e6,#e7,#e8,
+#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,
+#g1,#g2,#g3,#g4,#g5,#g6,#g7,#g8,
+#h1,#h2,#h3,#h4,#h5,#h6,#h7,#h8{
+    border: solid black 1px;
+    width: 40px;
+    height: 40px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+    
+#rook_1b,#rook_2b,#knight_1b,#knight_2b,#bishop_1b,#bishop_2b,#king_b,#queen_b,#pawn_1b,#pawn_2b,#pawn_3b,#pawn_4b,#pawn_5b,#pawn_6b,#pawn_7b,#pawn_8b{color:black;}
+
+.promote {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.promote-content {
+  border-radius: 5px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+}
+
+.promote_1 {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.promote-content_1 {
+  border-radius: 5px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+}
+
+#rook,#knight,#bishop,#queen{
+  color:black;
+  margin: 5px;
+  font-size:2.1em;
+}
+#rook_1,#knight_1,#bishop_1,#queen_1{
+  color:black;
+  margin: 5px;
+  font-size:2.1em;
+}
+p{
+color:black;   
+}
+#cor_h1{
+  position: absolute;
+  bottom: 0px;
+  left: 327px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_g1{
+  position: absolute;
+  bottom: 3px;
+  left: 285px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_f1{
+  position: absolute;
+  bottom: 0px;
+  left: 243px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_e1{
+  position: absolute;
+  bottom: 0px;
+  left: 201px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_d1{
+  position: absolute;
+  bottom: 0px;
+  left: 159px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_c1{
+  position: absolute;
+  bottom: 0px;
+  left: 117px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_b1{
+  position: absolute;
+  bottom: 0px;
+  left: 75px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_a1{
+  position: absolute;
+  bottom: 0px;
+  left: 36px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_1{
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_2 {
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_3 {
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_4 {
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_5{
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_6{
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_7{
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_8{
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#row1,#row2,#row3,#row4,#row5,#row6,#row7,#row8,#cor_letters{
+ position: relative;   
+}
+
+@media only screen and (min-width: 650px) {
+    body{
+        font-size: 2em;
+    }
+   #a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,
+#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,
+#c1,#c2,#c3,#c4,#c5,#c6,#c7,#c8,
+#d1,#d2,#d3,#d4,#d5,#d6,#d7,#d8,
+#e1,#e2,#e3,#e4,#e5,#e6,#e7,#e8,
+#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,
+#g1,#g2,#g3,#g4,#g5,#g6,#g7,#g8,
+#h1,#h2,#h3,#h4,#h5,#h6,#h7,#h8{
+    width: 70px;
+    height: 70px;  
+} 
+.promote-content{
+    width: 560px;
+}
+.promote-content_1{
+    width: 560px;
+}
+#cor_h1{
+  position: relative;
+  bottom: 35px;
+  left: 477px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_g1{
+  position: relative;
+  bottom: 35px;
+  left: 417px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_f1{
+  position: relative;
+  bottom: 35px;
+  left: 357px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_e1{
+  position: relative;
+  bottom: 35px;
+  left: 297px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_d1{
+  position: relative;
+  bottom: 35px;
+  left: 237px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_c1{
+  position: relative;
+  bottom: 35px;
+  left: 177px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_b1{
+  position: relative;
+  bottom: 35px;
+  left: 117px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_a1{
+  position: relative;
+  bottom: 35px;
+  left: 57px;
+  transform: translateX(-50%);
+  font-size:0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_1{
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_2 {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_3 {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_4 {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_5{
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_6{
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_7{
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_8{
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: rgb(100, 75, 43);
+}
+#row1,#row2,#row3,#row4,#row5,#row6,#row7,#row8{
+ position: relative;   
+}
+}
+
+@media only screen and (max-width: 393px) {
+    body{
+        font-size: 0.6em;
+    }
+   #a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,
+#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8,
+#c1,#c2,#c3,#c4,#c5,#c6,#c7,#c8,
+#d1,#d2,#d3,#d4,#d5,#d6,#d7,#d8,
+#e1,#e2,#e3,#e4,#e5,#e6,#e7,#e8,
+#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,
+#g1,#g2,#g3,#g4,#g5,#g6,#g7,#g8,
+#h1,#h2,#h3,#h4,#h5,#h6,#h7,#h8{
+    width: 25px;
+    height: 25px;  
+} 
+.promote-content{
+    width: 160px;
+}
+.promote-content_1{
+    width: 160px;
+}
+#cor_h1{
+  position: relative;
+  bottom: 13px;
+  left: 176px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_g1{
+  position: relative;
+  bottom: 15px;
+  left: 154px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_f1{
+  position: relative;
+  bottom: 13px;
+  left: 131px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_e1{
+  position: relative;
+  bottom: 13px;
+  left: 109px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_d1{
+  position: relative;
+  bottom: 13px;
+  left: 87px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_c1{
+  position: relative;
+  bottom: 13px;
+  left: 65px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_b1{
+  position: relative;
+  bottom: 13px;
+  left: 43px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_a1{
+  position: relative;
+  bottom: 13px;
+  left: 21px;
+  transform: translateX(-50%);
+  font-size:1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_1{
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_2 {
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_3 {
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_4 {
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_5{
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_6{
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+
+#cor_7{
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(240, 201, 150);
+}
+
+#cor_8{
+  position: absolute;
+  bottom: 15px;
+  left: 5px;
+  transform: translateX(-50%);
+  font-size: 1em;
+  color: rgb(100, 75, 43);
+}
+#row1,#row2,#row3,#row4,#row5,#row6,#row7,#row8{
+ position: relative;   
+}
+}
+</style>
+</body>
+</html>
